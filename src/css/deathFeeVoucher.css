@@ -1,0 +1,191 @@
+
+/* ==========================================
+   DEATH FEE VOUCHER
+========================================== */
+
+.death-fee-voucher-page {
+  width: 100%;
+  max-width: 1100px;
+  margin: 20px auto;
+  display: flex;
+  gap: 12px;
+  align-items: stretch;
+}
+
+.death-fee-voucher {
+  width: 50%;
+  border: 1px solid #333;
+  padding: 12px;
+  box-sizing: border-box;
+  background: #fff;
+  font-size: 12px;
+  position: relative;
+}
+
+.voucher-copy-title {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 5px;
+  border-bottom: 1px dashed #555;
+  padding-bottom: 4px;
+}
+
+.voucher-header {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.voucher-header h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.voucher-header p {
+  margin: 3px 0 0;
+  font-size: 12px;
+}
+
+.voucher-info {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 7px;
+}
+
+.voucher-row {
+  display: flex;
+  gap: 5px;
+}
+
+.voucher-row span {
+  font-weight: 600;
+}
+
+.voucher-table {
+  border-top: 1px solid #555;
+  border-left: 1px solid #555;
+}
+
+.voucher-line {
+  display: flex;
+  min-height: 25px;
+  border-bottom: 1px solid #555;
+  border-right: 1px solid #555;
+}
+
+.voucher-line span {
+  width: 40%;
+  padding: 4px 5px;
+  background: #f5f5f5;
+  border-right: 1px solid #555;
+  box-sizing: border-box;
+  font-weight: 600;
+}
+
+.voucher-line strong {
+  width: 60%;
+  padding: 4px 5px;
+  box-sizing: border-box;
+  font-weight: 500;
+}
+
+.voucher-fee {
+  margin-top: 8px;
+  padding: 6px 8px;
+  border: 1px solid #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+}
+
+.voucher-fee strong {
+  font-size: 15px;
+}
+
+.voucher-footer {
+  margin-top: 28px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+}
+
+.voucher-footer div {
+  border-top: 1px solid #333;
+  padding-top: 4px;
+  width: 35%;
+  text-align: center;
+}
+
+.voucher-print-button {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.voucher-print-button button {
+  padding: 8px 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background: #2563eb;
+  color: #fff;
+}
+
+
+/* ==========================================
+   PRINT
+========================================== */
+
+@media print {
+
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .death-fee-voucher-page {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 5mm;
+    gap: 5mm;
+  }
+
+  .death-fee-voucher {
+    width: 50%;
+    padding: 8px;
+    font-size: 10px;
+  }
+
+  .voucher-header h3 {
+    font-size: 13px;
+  }
+
+  .voucher-copy-title {
+    font-size: 11px;
+  }
+
+  .voucher-line {
+    min-height: 20px;
+  }
+
+  .voucher-line span,
+  .voucher-line strong {
+    padding: 3px;
+  }
+
+  .voucher-fee {
+    margin-top: 5px;
+    padding: 4px 6px;
+  }
+
+  .voucher-footer {
+    margin-top: 20px;
+  }
+
+  .voucher-print-button {
+    display: none;
+  }
+}
+

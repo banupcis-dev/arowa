@@ -1,0 +1,46 @@
+
+.common-btn {
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+   margin: 0 3px;
+}
+
+.common-btn:hover {
+  opacity: 0.85;
+}
+
+.common-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* রিসিভ */
+.btn-receive {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+/* ফি কর্তন */
+.btn-fee {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+/* অনুমোদন */
+.btn-approve {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+
+/* প্রিন্ট */
+.btn-print {
+   background: #e3f2fd;
+  color: green;
+}
+

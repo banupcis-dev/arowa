@@ -1,0 +1,190 @@
+.renewal-fee-page {
+  width: 100%;
+  padding: 15px;
+  box-sizing: border-box;
+  background: #f4f6f8;
+}
+
+.voucher-print-area {
+  max-width: 1000px;
+  margin: auto;
+  display: flex;
+  gap: 12px;
+}
+
+.renewal-fee-voucher {
+  flex: 1;
+  padding: 12px;
+  background: #fff;
+  border: 1px solid #222;
+  box-sizing: border-box;
+  font-family: "Noto Sans Bengali", "SolaimanLipi", Arial, sans-serif;
+  font-size: 13px;
+}
+
+.voucher-header {
+  text-align: center;
+  border-bottom: 1px solid #222;
+  padding-bottom: 6px;
+  margin-bottom: 8px;
+}
+
+.voucher-header h3 {
+  margin: 2px 0;
+  font-size: 16px;
+}
+
+.voucher-basic-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.voucher-basic-info > div,
+.voucher-business-name {
+  display: flex;
+  gap: 5px;
+  padding: 3px 0;
+}
+
+.voucher-basic-info input {
+  width: 120px;
+}
+
+.voucher-business-name {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 8px;
+}
+
+.voucher-fee-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.voucher-fee-table th,
+.voucher-fee-table td {
+  border: 1px solid #222;
+  padding: 4px 6px;
+}
+
+.voucher-fee-table th {
+  text-align: center;
+}
+
+.voucher-fee-table td:first-child {
+  width: 35px;
+  text-align: center;
+}
+
+.voucher-fee-table td:last-child {
+  width: 100px;
+  text-align: right;
+}
+
+.voucher-fee-table input {
+  width: 90px;
+  padding: 3px;
+  box-sizing: border-box;
+}
+
+.voucher-total-row {
+  font-weight: bold;
+}
+
+.voucher-amount-words {
+  display: flex;
+  gap: 5px;
+  margin-top: 8px;
+  padding: 5px;
+  border: 1px solid #222;
+}
+
+.voucher-signatures {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 35px;
+  text-align: center;
+}
+
+.voucher-signatures div {
+  width: 40%;
+  border-top: 1px solid #222;
+  padding-top: 4px;
+}
+
+.voucher-actions {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.voucher-actions button {
+  border: 0;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.voucher-cancel-btn {
+  background: #777;
+  color: #fff;
+}
+
+.voucher-submit-btn {
+  background: #198754;
+  color: #fff;
+}
+
+.copy-separator {
+  display: none;
+}
+
+@media print {
+  @page {
+    size: A4 landscape;
+    margin: 8mm;
+  }
+
+  .renewal-fee-page {
+    padding: 0;
+    background: #fff;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .voucher-print-area {
+    max-width: none;
+    display: flex;
+    gap: 8mm;
+  }
+
+  .renewal-fee-voucher {
+    width: 50%;
+    padding: 10px;
+  }
+
+  .voucher-basic-info input,
+  .voucher-fee-table input {
+    border: none !important;
+    outline: none !important;
+    background: transparent !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .voucher-print-area {
+    display: block;
+  }
+
+  .renewal-fee-voucher {
+    margin-bottom: 10px;
+  }
+
+  .voucher-basic-info {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,165 @@
+/* =================================
+   Trade License Receipt
+   ================================= */
+
+.trade-license-receipt-container {
+  width: 900px;
+  max-width: 100%;
+  margin: 30px auto;
+  padding: 20px;
+  box-sizing: border-box;
+  font-family: "Noto Sans Bengali", Arial, sans-serif;
+  background: #fff;
+}
+
+.trade-receipt-copy {
+  border: 2px solid #222;
+  padding: 25px;
+  box-sizing: border-box;
+  background: #fff;
+}
+
+.trade-receipt-header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.trade-receipt-header h2 {
+  margin: 0 0 5px;
+  font-size: 25px;
+}
+
+.trade-receipt-header h3 {
+  margin: 0 0 8px;
+  font-size: 21px;
+}
+
+.trade-receipt-header h4 {
+  display: inline-block;
+  margin: 5px 0 0;
+  padding: 5px 18px;
+  border: 1px solid #333;
+  font-size: 16px;
+}
+
+.trade-receipt-info {
+  margin-bottom: 20px;
+}
+
+.receipt-info-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+.receipt-info-row strong {
+  min-width: 120px;
+}
+
+.trade-receipt-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+.trade-receipt-table th,
+.trade-receipt-table td {
+  border: 1px solid #333;
+  padding: 10px;
+  text-align: center;
+}
+
+.trade-receipt-table th:nth-child(2),
+.trade-receipt-table td:nth-child(2) {
+  text-align: left;
+}
+
+.receipt-total-row th {
+  font-size: 17px;
+}
+
+.receipt-signature-section {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 70px;
+  gap: 100px;
+}
+
+.receipt-signature-box {
+  width: 220px;
+  text-align: center;
+}
+
+.receipt-signature-line {
+  border-top: 1px solid #222;
+  margin-bottom: 8px;
+}
+
+.receipt-signature-box p {
+  margin: 0;
+  font-size: 15px;
+}
+
+.receipt-copy-divider {
+  text-align: center;
+  margin: 25px 0;
+  color: #555;
+}
+
+.trade-receipt-actions {
+  display: flex;
+  justify-content: center;
+  margin: 25px 0;
+}
+
+.trade-receipt-actions button {
+  border: none;
+  padding: 10px 25px;
+  border-radius: 5px;
+  background: #198754;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.trade-receipt-actions button:hover {
+  opacity: 0.9;
+}
+
+/* ================================
+   Print
+   ================================ */
+
+@media print {
+
+  @page {
+    size: A4 portrait;
+    margin: 10mm;
+  }
+
+  body * {
+    visibility: hidden;
+  }
+
+  .trade-license-receipt-container,
+  .trade-license-receipt-container * {
+    visibility: visible;
+  }
+
+  .trade-license-receipt-container {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .trade-receipt-copy {
+    page-break-inside: avoid;
+  }
+
+  .trade-receipt-actions {
+    display: none !important;
+  }
+
+}

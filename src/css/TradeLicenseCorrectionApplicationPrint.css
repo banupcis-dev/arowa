@@ -1,0 +1,180 @@
+/* =========================================
+   Trade License Correction Application Print
+   ========================================= */
+
+.correction-print-container {
+  width: 210mm;
+  min-height: 297mm;
+  margin: 20px auto;
+  padding: 20mm;
+  box-sizing: border-box;
+  background: #ffffff;
+  color: #000;
+  font-family: Arial, "Noto Sans Bengali", sans-serif;
+}
+
+/* Header */
+
+.print-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.print-header h2 {
+  margin-bottom: 18px;
+  font-size: 24px;
+}
+
+.print-header p {
+  margin: 6px 0;
+  font-size: 15px;
+}
+
+/* Section Heading */
+
+.correction-print-container h3 {
+  margin: 20px 0 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #000;
+  font-size: 18px;
+}
+
+/* Correction Table */
+
+.correction-print-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.correction-print-table th,
+.correction-print-table td {
+  border: 1px solid #000;
+  padding: 9px 7px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 13px;
+}
+
+.correction-print-table th {
+  font-weight: bold;
+}
+
+/* Applicant Information */
+
+.print-applicant-info {
+  margin-top: 25px;
+  font-size: 15px;
+}
+
+.print-applicant-info p {
+  margin: 8px 0;
+}
+
+/* Declaration */
+
+.print-declaration {
+  margin-top: 30px;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+/* Signature */
+
+.print-signature {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 80px;
+  font-size: 14px;
+}
+
+.print-signature div {
+  width: 180px;
+  text-align: center;
+  padding-top: 8px;
+  border-top: 1px solid #000;
+}
+
+/* Print Button */
+
+.print-button-area {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.print-button-area button {
+  padding: 10px 25px;
+  border: none;
+  border-radius: 5px;
+  background: #333;
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.print-button-area button:hover {
+  opacity: 0.85;
+}
+
+/* =========================================
+   Print Settings
+   ========================================= */
+
+@media print {
+  @page {
+    size: A4;
+    margin: 10mm;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background: #fff;
+  }
+
+  .correction-print-container {
+    width: 100%;
+    min-height: auto;
+    margin: 0;
+    padding: 5mm;
+    box-shadow: none;
+  }
+
+  .print-button-area {
+    display: none;
+  }
+
+  .correction-print-table {
+    page-break-inside: auto;
+  }
+
+  .correction-print-table tr {
+    page-break-inside: avoid;
+    page-break-after: auto;
+  }
+
+  .correction-print-table thead {
+    display: table-header-group;
+  }
+}
+
+/* =========================================
+   Screen Responsive
+   ========================================= */
+
+@media (max-width: 800px) {
+  .correction-print-container {
+    width: 95%;
+    min-height: auto;
+    padding: 20px;
+  }
+
+  .correction-print-table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  .print-signature {
+    margin-top: 60px;
+  }
+}

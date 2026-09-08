@@ -1,0 +1,66 @@
+.super-admin-container {
+  min-height: 100vh;
+  padding: 30px;
+  background:rgb(71, 78, 71);
+}
+
+
+.super-admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 20px 30px;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+
+.super-admin-header h1 {
+  margin: 0;
+  color: #1b4d89;
+  font-size: 28px;
+}
+
+
+.logout-btn {
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+
+.logout-btn:hover {
+  background: #b02a37;
+}
+
+
+.super-admin-menu {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+
+.super-admin-menu button {
+  padding: 25px;
+  border: none;
+  border-radius: 12px;
+  background: white;
+  color: #1b4d89;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+
+.super-admin-menu button:hover {
+  background: #1b4d89;
+  color: white;
+  transform: translateY(-3px);
+}

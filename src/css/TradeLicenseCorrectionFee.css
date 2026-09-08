@@ -1,0 +1,180 @@
+/* =========================================
+   Trade License Correction Fee
+   ========================================= */
+
+.trade-license-correction-fee-container {
+  width: 90%;
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-sizing: border-box;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* Heading */
+
+.trade-license-correction-fee-container h2 {
+  margin: 0 0 25px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+/* =========================================
+   Application Information
+   ========================================= */
+
+.fee-info-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 25px;
+  padding: 18px;
+  background: #f7f7f7;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.fee-info-box div {
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  font-size: 15px;
+}
+
+.fee-info-box strong {
+  min-width: 150px;
+}
+
+/* =========================================
+   Form
+   ========================================= */
+
+.trade-license-correction-fee-form {
+  width: 100%;
+}
+
+.fee-form-group {
+  margin-bottom: 18px;
+}
+
+.fee-form-group label {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.fee-form-group label span {
+  color: #d00;
+}
+
+.fee-form-group input,
+.fee-form-group textarea {
+  width: 100%;
+  padding: 11px 13px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 15px;
+  outline: none;
+  font-family: inherit;
+}
+
+.fee-form-group input:focus,
+.fee-form-group textarea:focus {
+  border-color: #555;
+}
+
+.fee-form-group textarea {
+  resize: vertical;
+}
+
+/* =========================================
+   Buttons
+   ========================================= */
+
+.fee-form-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.fee-form-actions button {
+  min-width: 130px;
+  padding: 11px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.fee-submit-btn {
+  background: #333;
+  color: #fff;
+}
+
+.fee-submit-btn:hover {
+  opacity: 0.9;
+}
+
+.fee-cancel-btn {
+  background: #ddd;
+  color: #222;
+}
+
+.fee-cancel-btn:hover {
+  opacity: 0.85;
+}
+
+/* =========================================
+   Responsive
+   ========================================= */
+
+@media (max-width: 700px) {
+  .trade-license-correction-fee-container {
+    width: 95%;
+    padding: 18px;
+  }
+
+  .fee-info-box {
+    grid-template-columns: 1fr;
+  }
+
+  .fee-info-box div {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .fee-info-box strong {
+    min-width: auto;
+  }
+
+  .fee-form-actions {
+    flex-direction: column;
+  }
+
+  .fee-form-actions button {
+    width: 100%;
+  }
+}
+
+/* =========================================
+   Print
+   ========================================= */
+
+@media print {
+  .trade-license-correction-fee-container {
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+    box-shadow: none;
+  }
+
+  .fee-form-actions {
+    display: none;
+  }
+}

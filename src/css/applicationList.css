@@ -1,0 +1,182 @@
+/* ===========================
+   Application List
+=========================== */
+
+.application-container{
+    width:98%;
+    margin:20px auto;
+    background:#fff;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 2px 10px rgba(0,0,0,.12);
+}
+
+.application-container h2{
+    text-align:center;
+    color:#0B5E3B;
+    margin-bottom:20px;
+}
+
+/* ===========================
+   Table
+=========================== */
+
+.table-responsive{
+    width:100%;
+    overflow-x:auto;
+}
+
+.application-table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.application-table th{
+    background:#0B5E3B;
+    color:#fff;
+    border:1px solid #ddd;
+    padding:12px 8px;
+    text-align:center;
+    font-size:15px;
+}
+
+.application-table td{
+    border:1px solid #ddd;
+    padding:8px;
+    text-align:center;
+    vertical-align:middle;
+}
+
+.application-table tbody tr:nth-child(even){
+    background:#f8f8f8;
+}
+
+.application-table tbody tr:hover{
+    background:#eef7ff;
+}
+
+/* ===========================
+   Column Width
+=========================== */
+
+.application-table th:nth-child(1),
+.application-table td:nth-child(1){
+    width:8%;
+}
+
+.application-table th:nth-child(2),
+.application-table td:nth-child(2){
+    width:12%;
+}
+
+.application-table th:nth-child(3),
+.application-table td:nth-child(3){
+    width:20%;
+}
+
+.application-table th:nth-child(4),
+.application-table td:nth-child(4){
+    width:18%;
+}
+
+.application-table th:nth-child(5),
+.application-table td:nth-child(5){
+    width:8%;
+}
+
+.application-table th:nth-child(6),
+.application-table td:nth-child(6){
+    width:12%;
+}
+
+.application-table th:nth-child(7),
+.application-table td:nth-child(7){
+    width:22%;
+}
+
+/* ===========================
+   Photo
+=========================== */
+
+.application-photo{
+    width:65px;
+    height:75px;
+    object-fit:cover;
+    border-radius:5px;
+    border:2px solid #ddd;
+}
+
+/* ===========================
+   Action Buttons
+=========================== */
+
+.action-group{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:8px;
+}
+
+.view-btn{
+    height:40px;
+    border:none;
+    border-radius:6px;
+    color:#fff;
+    cursor:pointer;
+    font-size:17px;
+    font-weight:bold;
+    transition:.3s;
+    box-shadow:0 2px 5px rgba(0,0,0,.18);
+}
+
+.view-btn:hover{
+    transform:scale(1.05);
+}
+
+.view-btn:disabled{
+    background:#bdbdbd !important;
+    cursor:not-allowed;
+    transform:none;
+}
+
+/* বিভিন্ন Button Color */
+
+.action-group .view-btn:nth-child(1){
+    background:#0d6efd;
+    
+}
+
+.action-group .view-btn:nth-child(2){
+    background:#20c997;
+}
+
+.action-group .view-btn:nth-child(3){
+    background:#6f42c1;
+}
+
+.action-group .view-btn:nth-child(4){
+    background:#198754;
+}
+
+.action-group .view-btn:nth-child(5){
+    background:#dc3545;
+}
+
+.action-group .view-btn:nth-child(6){
+    background:#fd7e14;
+}
+
+.action-group .view-btn:nth-child(7){
+    background:#6610f2;
+}
+
+/* ===========================
+   Mobile
+=========================== */
+
+@media(max-width:992px){
+
+    .application-table{
+        min-width:1100px;
+    }
+
+}

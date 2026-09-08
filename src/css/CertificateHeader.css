@@ -1,0 +1,187 @@
+ /* =========================================
+   Certificate Header
+========================================= */
+
+.header-top {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+/* QR Code */
+
+.header-qr {
+  width: 120px;
+  flex-shrink: 0;
+  text-align: left;
+}
+
+
+/* Office Information */
+.header-office {
+  flex: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.header-office h2,
+.header-office h3,
+.header-office h4,
+.header-office p {
+  width: 100%;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: center !important;
+}
+
+/* Main Office Name */
+.header-office h2 {
+  font-size: 22px;
+  line-height: 1.2 !important;
+}
+
+/* Office Title */
+.header-office h3 {
+  font-size: 17px;
+  line-height: 1.2 !important;
+}
+
+/* Government Title */
+.header-office h4 {
+  font-size: 15px;
+  line-height: 1.2 !important;
+}
+
+/* Mobile / Email / Website / Address */
+.header-office p {
+  font-size: 13px;
+  line-height: 1.1 !important;
+}
+
+/* Barcode + Applicant Photo */
+
+.header-photo {
+  width: 130px;
+  flex-shrink: 0;
+  text-align: center;
+  border: none;
+  box-shadow: none;
+}
+
+.photo-barcode {
+  width: 100%;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: center;
+  border: none;
+  box-shadow: none;
+}
+
+.certificate-photo {
+  width: 90px;
+  height: 110px;
+  object-fit: cover;
+  border: none !important;
+  outline: none;
+  box-shadow: none;
+}
+
+
+/* Certificate Title */
+
+.certificate-title {
+  width: 100%;
+  text-align: center !important;
+  margin: 10px 0;
+  padding: 0;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Bottom Header Information */
+
+.header-bottom {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.header-item {
+  width: 33.33%;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.1;
+}
+
+.header-item:first-child {
+  text-align: left;
+}
+
+.header-item:last-child {
+  text-align: right;
+}
+/* certificate-copy-type */
+.header-qr {
+  width: 130px;
+  flex-shrink: 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.certificate-copy-type {
+  display: block;
+  margin-top: 6px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+/* Print */
+
+@media print {
+
+  .header-top {
+    margin-bottom: 10px;
+  }
+
+  .header-office h4 {
+    font-size: 14px;
+  }
+
+  .header-office h3 {
+    font-size: 15px;
+  }
+
+  .header-office h2 {
+    font-size: 19px;
+  }
+
+  .header-office p {
+    font-size: 12px;
+  }
+
+  .certificate-title {
+    font-size: 19px;
+  }
+
+  .header-item {
+    font-size: 12px;
+  }
+
+  .certificate-photo {
+    width: 80px;
+    height: 100px;
+  }
+}

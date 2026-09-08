@@ -1,0 +1,67 @@
+.trade-license-renewal-container {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 25px;
+}
+
+.trade-license-renewal-container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.renewal-search-box,
+.renewal-found-box {
+  background: #fff;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 7px;
+  font-weight: bold;
+}
+
+.form-group label span {
+  color: red;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 11px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.renewal-error {
+  color: red;
+  margin: 15px 0;
+  font-weight: bold;
+}
+
+.renewal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.search-btn,
+.submit-btn,
+.reset-btn {
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+.license-info {
+  line-height: 1.8;
+  margin-top: 20px;
+}

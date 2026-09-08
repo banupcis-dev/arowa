@@ -1,0 +1,166 @@
+/* ===============================
+   CertificateCorrectionList.css
+================================= */
+
+.certificate-list-container {
+  width: 95%;
+  max-width: 1400px;
+  margin: 25px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.certificate-list-container h2 {
+  text-align: center;
+  color: #0b6e4f;
+  margin-bottom: 20px;
+}
+
+.certificate-list-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.search-input {
+  flex: 1;
+  min-width: 280px;
+  padding: 10px 12px;
+  border: 1px solid #bdbdbd;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+.certificate-list-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.certificate-list-table th,
+.certificate-list-table td {
+  border: 1px solid #dcdcdc;
+  padding: 10px;
+  text-align: center;
+}
+
+.certificate-list-table th {
+  background: #0b6e4f;
+  color: #fff;
+}
+
+.certificate-list-table tbody tr:nth-child(even) {
+  background: #f8f8f8;
+}
+
+.certificate-list-table tbody tr:hover {
+  background: #eaf7f2;
+}
+
+/* Status */
+
+.status-pending {
+  color: #d97706;
+  font-weight: bold;
+}
+
+.status-approved {
+  color: #15803d;
+  font-weight: bold;
+}
+
+.status-rejected {
+  color: #dc2626;
+  font-weight: bold;
+}
+
+/* Buttons */
+
+.preview-btn,
+.action-btn {
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #fff;
+  padding: 8px 14px;
+  font-size: 14px;
+}
+
+.preview-btn {
+  background: #0b6e4f;
+}
+
+.preview-btn:hover {
+  background: #09553d;
+}
+
+.view-btn {
+  background: #2563eb;
+}
+
+.view-btn:hover {
+  background: #1d4ed8;
+}
+
+.edit-btn {
+  background: #f59e0b;
+}
+
+.edit-btn:hover {
+  background: #d97706;
+}
+
+.print-btn {
+  background: #0ea5e9;
+}
+
+.print-btn:hover {
+  background: #0284c7;
+}
+
+.delete-btn {
+  background: #dc2626;
+}
+
+.delete-btn:hover {
+  background: #b91c1c;
+}
+
+.action-btn {
+  margin: 2px;
+}
+
+.certificate-list-footer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+  .certificate-list-top {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-input {
+    width: 100%;
+  }
+
+  .certificate-list-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .certificate-list-footer {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,162 @@
+/* =========================
+   BANUPCIS LOGIN
+========================= */
+
+.login-container {
+  width: 90%;
+  max-width: 850px;
+  margin: 30px auto;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.login-title {
+  background: #00695c;
+  color: white;
+  text-align: center;
+  padding: 12px;
+  font-size: 24px;
+}
+
+
+/* Main Box */
+
+.login-box {
+  display: flex;
+}
+
+
+/* Left Side */
+
+.login-left {
+  width: 45%;
+  background: #1565c0;
+  color: white;
+  padding: 25px;
+}
+
+.login-left h2 {
+  color: #ffeb3b;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.system-name {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.login-left p {
+  line-height: 1.6;
+}
+
+
+/* Status */
+
+.status-box {
+  margin-top: 25px;
+  border-top: 1px solid rgba(255,255,255,.4);
+  padding-top: 15px;
+}
+
+
+/* Right Side */
+
+.login-right {
+  width: 55%;
+  padding: 30px;
+}
+
+.login-right h3 {
+  text-align: center;
+  color: #1565c0;
+  font-size: 22px;
+}
+
+
+.login-right label {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+
+.login-right input {
+  width: 100%;
+  height: 38px;
+  padding: 5px 10px;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+
+/* Forgot Password */
+
+.forgot-password {
+  text-align: right;
+  margin-top: 10px;
+}
+
+.forgot-password button {
+  border: none;
+  background: none;
+  color: #1565c0;
+  cursor: pointer;
+}
+
+.forgot-password button:hover {
+  text-decoration: underline;
+}
+
+
+/* Note */
+
+.login-note {
+  font-size: 14px;
+  color: #666;
+}
+
+
+/* Login Button */
+
+.login-btn {
+  width: 100%;
+  height: 42px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 5px;
+  background: #1565c0;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.login-btn:hover {
+  background: #0d47a1;
+}
+
+
+/* Mobile */
+
+@media(max-width:768px){
+
+  .login-box {
+    flex-direction: column;
+  }
+
+  .login-left,
+  .login-right {
+    width: 100%;
+  }
+
+}

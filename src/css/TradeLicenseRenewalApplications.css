@@ -1,0 +1,48 @@
+.trade-license-renewal-applications-container {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.renewal-applications-header {
+  margin-bottom: 20px;
+}
+
+.renewal-applications-header h2 {
+  text-align: center;
+}
+
+.renewal-applications-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.renewal-applications-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+}
+
+.renewal-applications-table th,
+.renewal-applications-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.renewal-applications-table th {
+  font-weight: bold;
+}
+
+.action-btn {
+  border: none;
+  padding: 6px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.no-application {
+  text-align: center;
+  padding: 25px !important;
+}
