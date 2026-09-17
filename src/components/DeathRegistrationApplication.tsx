@@ -3,6 +3,9 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 import "../css/banupcis.css";
 import AddressForm from "./AddressForm";
+import DocumentsUpload from "./DocumentsUpload";
+import ApplicantsDeclaration from "./ApplicantsDeclaration";
+
 
 interface AddressData {
   country: {
@@ -109,8 +112,12 @@ function DeathRegistrationApplication() {
   // =========================
   // Documents
   // =========================
-  const [documents, setDocuments] = useState<File[]>([]);
+  const [documents, setDocuments] = useState<any[]>([]);
 
+  const [applicantRelation, setApplicantRelation] = useState("");
+  const [applicantName, setApplicantName] = useState("");
+  const [applicantsDeclaration, setApplicantsDeclaration] = useState("");
+  const [isAgreed, setIsAgreed] = useState(false);
   // =========================================================
   // Search Birth Registration Book
   // =========================================================
@@ -285,8 +292,28 @@ function DeathRegistrationApplication() {
         "[]"
     );
 
-    const newApplication = {
-      id: Date.now(),
+    // =========================
+// মৃত্যু নিবন্ধন আবেদন ID
+// =========================
+const nextApplicationNumber = Number(
+  localStorage.getItem("deathRegistrationApplicationSequence") || "200000"
+) + 1;
+
+localStorage.setItem(
+  "deathRegistrationApplicationSequence",
+  String(nextApplicationNumber)
+);
+
+const applicationId = `DRA: ${nextApplicationNumber}`;
+
+const newApplication = {
+  id: Date.now(),
+  applicationId,
+  applicantRelation,
+applicantName,
+applicantsDeclaration,
+isAgreed,
+  
 
       // Birth Registration Book থেকে পাওয়া তথ্য
       birthRegistrationNo: selectedPerson.registerNo,
@@ -297,12 +324,17 @@ function DeathRegistrationApplication() {
 
       deceasedNameEn:
         selectedPerson.deceasedNameEn || "",
+            fatherNameBeg:
+  selectedPerson.fatherNameBeg || "",
 
-      fatherNameBeg:
-        selectedPerson.fatherNameBeg || "",
+fatherNameEn:
+  selectedPerson.fatherNameEn || "",
 
-      motherName:
-        selectedPerson.motherName || "",
+motherName:
+  selectedPerson.motherName || "",
+
+motherNameEn:
+  selectedPerson.motherNameEn || "",
 
       gender:
         selectedPerson.gender || "",
@@ -347,12 +379,22 @@ function DeathRegistrationApplication() {
       JSON.stringify(existingApplications)
     );
 
-    Swal.fire({
-      icon: "success",
-      title: "আবেদন সংরক্ষিত হয়েছে",
-      text: "মৃত্যু নিবন্ধনের আবেদন সফলভাবে সংরক্ষণ করা হয়েছে।",
-      confirmButtonText: "ঠিক আছে",
-    }).then(() => {
+   Swal.fire({
+  icon: "success",
+  title: "আবেদন সংরক্ষিত হয়েছে",
+  html: `
+    <div style="font-size:18px;">
+      <p>মৃত্যু নিবন্ধনের আবেদন সফলভাবে সংরক্ষণ করা হয়েছে।</p>
+      <p>
+        <strong>আবেদন আইডি:</strong>
+        <span style="color:#0d6efd;">
+          ${applicationId}
+        </span>
+      </p>
+    </div>
+  `,
+  confirmButtonText: "ঠিক আছে",
+}).then(() => {
       // Form reset
       setBirthRegistrationNo("");
       setBirthDate("");
@@ -371,6 +413,11 @@ function DeathRegistrationApplication() {
       setDeathAddress(emptyAddress);
       setResidenceAddress(emptyAddress);
       setSameAddress(false);
+
+      setApplicantRelation("");
+setApplicantName("");
+setApplicantsDeclaration("");
+setIsAgreed(false);
 
       setDocuments([]);
     });
@@ -709,13 +756,25 @@ function DeathRegistrationApplication() {
           {/* ============================================= */}
           <h3>নথী সংযোগ করুন</h3>
 
-          <div className="form-group">
-            <input
-              type="file"
-              multiple
-              onChange={handleDocuments}
+         <DocumentsUpload
+         files={documents}
+         setFiles={setDocuments}
+           errors={{}}
             />
-          </div>
+      <h3>আবেদনকারীর প্রত্যয়ন</h3>
+
+<ApplicantsDeclaration
+  banglaName={selectedPerson?.deceasedNameBn || ""}
+  applicantsDeclaration={applicantsDeclaration}
+  setApplicantsDeclaration={setApplicantsDeclaration}
+  applicantRelation={applicantRelation}
+  setApplicantRelation={setApplicantRelation}
+  applicantName={applicantName}
+  setApplicantName={setApplicantName}
+  isAgreed={isAgreed}
+  setIsAgreed={setIsAgreed}
+  errors={{}}
+/>
 
           {/* ============================================= */}
           {/* Submit */}

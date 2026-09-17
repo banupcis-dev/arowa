@@ -20,19 +20,11 @@ function CertificateFooter({ application }: CertificateFooterProps) {
         <div className="signature-title">
           ইউনিয়ন পরিষদ
         </div>
-
-        <div className="seal-box">
-          সীল
-        </div>
       </div>
 
       {/* মাঝখানে - ইউপি সীলমোহর */}
       <div className="footer-seal">
-        <div className="seal-circle">
-          <span>ইউনিয়ন পরিষদ</span>
-          <strong>সীলমোহর</strong>
-          <span>বাংলাদেশ</span>
-        </div>
+          <strong> অফিসের সীলমোহর</strong>
       </div>
 
       {/* ডান পাশ - ইউপি চেয়ারম্যান */}
@@ -47,10 +39,6 @@ function CertificateFooter({ application }: CertificateFooterProps) {
 
         <div className="signature-title">
           ইউনিয়ন পরিষদ
-        </div>
-
-        <div className="seal-box">
-          সীল
         </div>
       </div>
 

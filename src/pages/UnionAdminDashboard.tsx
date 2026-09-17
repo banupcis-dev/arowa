@@ -2,11 +2,14 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../css/UnionAdminDashboard.css";
 
+
 function UnionAdminDashboard() {
   const navigate = useNavigate();
   const [showTradeLicenseMenu, setShowTradeLicenseMenu] = useState(false);
   const [birthMenu, setBirthMenu] = useState(false);
   const [showDeathRegistrationMenu, setShowDeathRegistrationMenu] =
+  useState(false);
+  const [showSameNameCertificateMenu, setShowSameNameCertificateMenu] =
   useState(false);
 
   /* ================= Current Admin ================= */
@@ -104,6 +107,8 @@ function UnionAdminDashboard() {
       (item: any) =>
         item.rejectStatus === true
     ).length;
+    const [showWarishCertificateMenu, setShowWarishCertificateMenu] =
+  useState(false);
   return (
         <div className="uad-layout">
 
@@ -281,7 +286,7 @@ function UnionAdminDashboard() {
                   setCitizenMenu(!citizenMenu)
                 }
               >
-                <span>নাগরিক সেবাসমূহ</span>
+                <span>নাগরিক সনদ</span>
               </button>
 
               {citizenMenu && (
@@ -346,7 +351,7 @@ function UnionAdminDashboard() {
                       navigate("/citizen-certificate-register-book")
                     }
                   >
-                    নাগরিক সনদের বই
+                    নাগরিক সনদের রেজিস্টার বই
                   </li>
 
                 </ul>
@@ -378,7 +383,7 @@ function UnionAdminDashboard() {
           navigate("/deceased-birth-registration-applications")
         }
       >
-        মৃত ব্যক্তির জন্ম নিবন্ধনসমূহ
+         জন্ম  নিবন্ধন আবেদনসমূহ
       </li>
 
       <li
@@ -394,7 +399,7 @@ function UnionAdminDashboard() {
           navigate("/birth-registration-book")
         }
       >
-        জন্ম নিবন্ধন বই
+        জন্ম নিবন্ধন রেজিস্টার বই
       </li>
 
     </ul>
@@ -436,7 +441,49 @@ function UnionAdminDashboard() {
           মৃত্যু নিবন্ধনের আবেদনসমূহ
         </button>
       </li>
-
+      {/* মৃত্যু নিবন্ধন সংশোধনের জন্য আবেদন করুন */}
+<li>
+  <button
+    className="uad-menu-btn"
+    onClick={() =>
+      navigate("/death-registration-correction")
+    }
+  >
+    মৃত্যু নিবন্ধন সংশোধনের জন্য আবেদন করুন
+  </button>
+</li>
+<li>
+  <button
+    className="uad-menu-btn"
+    onClick={() =>
+      navigate("/death-registration-correction-list")
+    }
+  >
+    মৃত্যু নিবন্ধন সংশোধনের আবেদনসমূহ
+  </button>
+</li>
+{/* নিবন্ধন সনদ পুনঃমুদ্রণ করুন */}
+<li>
+  <button
+    className="uad-menu-btn"
+    onClick={() =>
+      navigate("/death-registration-reprint")
+    }
+  >
+    মৃত্যু নিবন্ধন সনদ পুনঃমুদ্রণের জন্য আবেদন করুন
+  </button>
+</li>
+{/* নিবন্ধন সনদ পুনঃমুদ্রণের আবেদনসমূহ */}
+<li>
+  <button
+    className="uad-menu-btn"
+    onClick={() =>
+      navigate("/death-registration-reprint-applications")
+    }
+  >
+    মৃত্যু নিবন্ধন সনদ পুনঃমুদ্রণের আবেদনসমূহ
+  </button>
+</li>
       {/* মৃত্যু নিবন্ধন বই */}
       <li>
         <button
@@ -445,7 +492,7 @@ function UnionAdminDashboard() {
             navigate("/death-registration-book")
           }
         >
-          মৃত্যু নিবন্ধন বই
+          মৃত্যু নিবন্ধন রেজিস্টার বই
         </button>
       </li>
 
@@ -464,9 +511,6 @@ function UnionAdminDashboard() {
     </ul>
   )}
 </li>
-
-
-
 <li>
   <button
     className="uad-menu-btn"
@@ -549,6 +593,179 @@ function UnionAdminDashboard() {
     </ul>
   )}
 </li>
+<li>
+  <button
+    className="uad-menu-btn"
+    onClick={() =>
+      setShowWarishCertificateMenu(!showWarishCertificateMenu)
+    }
+  >
+    ওয়ারিশ সনদ
+  </button>
+
+  {showWarishCertificateMenu && (
+    <ul className="uad-submenu">
+
+      {/* ওয়ারিশ সনদের জন্য আবেদন */}
+      <li>
+        <button
+          className="uad-menu-btn"
+          onClick={() => navigate("/warish-certificate")}
+        >
+          ওয়ারিশ সনদের জন্য আবেদন করুন
+        </button>
+      </li>
+
+      {/* আবেদনসমূহ */}
+      <li>
+        <button
+          className="uad-menu-btn"
+          onClick={() => navigate("/warish-certificate-list")}
+        >
+          ওয়ারিশ সনদের আবেদনসমূহ
+        </button>
+      </li>
+
+      {/* ওয়ারিশ সনদ রেজিস্টার */}
+      <li>
+        <button
+          className="uad-menu-btn"
+          onClick={() => navigate("/warish-certificate-register")}
+        >
+          ওয়ারিশ সনদ রেজিস্টার
+        </button>
+      </li>
+
+      {/* ফি রেজিস্টার */}
+      <li>
+        <button
+          className="uad-menu-btn"
+          onClick={() =>
+            navigate("/warish-certificate-fee-register")
+          }
+        >
+          ফি আদায় রেজিস্টার
+        </button>
+      </li>
+
+    </ul>
+  )}
+</li>
+<li>
+  <button
+    className="uad-menu-btn"
+    onClick={() =>
+      setShowSameNameCertificateMenu(
+        !showSameNameCertificateMenu
+      )
+    }
+  >
+    একই নামে সনদ পত্র
+  </button>
+
+  {showSameNameCertificateMenu && (
+    <ul className="uad-submenu">
+
+      {/* একই নামে সনদ পত্রের জন্য আবেদন করুন */}
+      <li>
+        <button
+          className="uad-menu-btn"
+          onClick={() =>
+            navigate("/same-name-certificate-application")
+          }
+        >
+          একই নামে সনদ পত্রের জন্য আবেদন করুন
+        </button>
+      </li>
+
+      {/* একই নামে সনদ পত্রের আবেদনসমূহ */}
+      <li>
+        <button
+          className="uad-menu-btn"
+          onClick={() =>
+            navigate("/same-name-certificate-applications")
+          }
+        >
+          একই নামে সনদ পত্রের আবেদনসমূহ
+        </button>
+      </li>
+
+      {/* একই নামে সনদ পত্র সংশোধনের জন্য আবেদন করুন */}
+      <li>
+        <button
+          className="uad-menu-btn"
+          onClick={() =>
+            navigate("/same-name-certificate-correction")
+          }
+        >
+          একই নামে সনদ পত্র সংশোধনের জন্য আবেদন করুন
+        </button>
+      </li>
+
+      {/* একই নামে সনদ পত্র সংশোধনের আবেদনসমূহ */}
+      <li>
+        <button
+          className="uad-menu-btn"
+          onClick={() =>
+            navigate("/same-name-certificate-correction-list")
+          }
+        >
+          একই নামে সনদ পত্র সংশোধনের আবেদনসমূহ
+        </button>
+      </li>
+
+      {/* একই নামে সনদ পত্র পুনঃমুদ্রণের জন্য আবেদন করুন */}
+      <li>
+        <button
+          className="uad-menu-btn"
+          onClick={() =>
+            navigate("/same-name-certificate-reprint")
+          }
+        >
+          একই নামে সনদ পত্র পুনঃমুদ্রণের জন্য আবেদন করুন
+        </button>
+      </li>
+
+      {/* একই নামে সনদ পত্র পুনঃমুদ্রণের আবেদনসমূহ */}
+      <li>
+        <button
+          className="uad-menu-btn"
+          onClick={() =>
+            navigate("/same-name-certificate-reprint-applications")
+          }
+        >
+          একই নামে সনদ পত্র পুনঃমুদ্রণের আবেদনসমূহ
+        </button>
+      </li>
+
+      {/* একই নামে সনদ পত্র রেজিস্টার বই */}
+      <li>
+        <button
+          className="uad-menu-btn"
+          onClick={() =>
+            navigate("/same-name-certificate-book")
+          }
+        >
+          একই নামে সনদ পত্র রেজিস্টার বই
+        </button>
+      </li>
+
+      {/* ফি আদায় রেজিস্টার */}
+      <li>
+        <button
+          className="uad-menu-btn"
+          onClick={() =>
+            navigate("/same-name-certificate-fee-register")
+          }
+        >
+          ফি আদায় রেজিস্টার
+        </button>
+      </li>
+
+    </ul>
+  )}
+</li>
+
             <li>
 
               <button

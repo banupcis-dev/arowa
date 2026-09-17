@@ -217,3 +217,52 @@
 .certificate-info td:last-child {
   text-align: left !important;
 }
+.certificate-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.certificate-container::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 520px;
+  height: 520px;
+
+  background-image: url("../assets/certificate-watermark.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  opacity: 0.08;
+
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.certificate-container > * {
+  position: relative;
+  z-index: 1;
+}
+.certificate-body {
+  position: relative;
+}
+.certificate-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 500px;
+  object-fit: contain;
+  opacity: 0.20;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.certificate-content {
+  position: relative;
+  z-index: 1;
+}

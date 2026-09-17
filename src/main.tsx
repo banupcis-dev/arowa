@@ -30,6 +30,7 @@ import CorrectionPreview from "./pages/CorrectionPreview";
 import BirthRegistrationApplication from "./components/birth-registration/BirthRegistrationApplication";
 import BirthRegistrationPreview from "./components/birth-registration/BirthRegistrationPreview";
 import DeceasedBirthRegistrationApplications from "./components/DeceasedBirthRegistrationApplications";
+import DeathFeeRegister from "./components/DeathFeeRegister";
 import BirthRegistrationBook from "./pages/BirthRegistrationBook";
 import BirthFeeRegister from "./pages/BirthFeeRegister";
 import TradeLicenseApplication from "./components/TradeLicenseApplication";
@@ -53,6 +54,25 @@ import DeathRegistrationApplication from "./components/DeathRegistrationApplicat
 import DeathRegistrationApplications from "./components/DeathRegistrationApplications";
 import DeathRegistrationBook from "./components/DeathRegistrationBook";
 import DeathFeeVoucher from "./components/DeathFeeVoucher";
+import DeathRegistrationPreview from "./components/DeathRegistrationPreview";
+import DeathRegistrationCertificate from "./components/DeathRegistrationCertificate";
+import WarishCertificateApplication from "./components/WarishCertificateApplication";
+import WarishCertificatePreview from "./components/WarishCertificatePreview";
+import WarishCertificateApplicationList from "./components/WarishCertificateApplicationList";
+import DeathRegistrationCorrection from "./components/DeathRegistrationCorrection";
+import DeathRegistrationCorrectionList from "./components/DeathRegistrationCorrectionList";
+import DeathRegistrationCorrectionView from "./components/DeathRegistrationCorrectionView";
+import DeathRegistrationCorrectionFee from "./components/DeathRegistrationCorrectionFee";
+import DeathRegistrationReprint from "./components/DeathRegistrationReprint";
+import DeathRegistrationReprintApplications from "./components/DeathRegistrationReprintApplications";
+import SameNameCertificate from "./components/sameNameCertificate";
+import SameNameCertificateApplications from "./components/SameNameCertificateApplications";
+import SameNameCertificatePreview from "./components/SameNameCertificatePreview";
+import SameNameCertificateBook from "./components/SameNameCertificateBook";
+import SameNameCertificatePrint from "./components/SameNameCertificatePrint";
+import SameNameCertificateFeeRegister
+  from "./components/SameNameCertificateFeeRegister";
+  import Seal from "./components/Seal";
 
 
 createRoot(document.getElementById("root")!).render(
@@ -149,6 +169,14 @@ createRoot(document.getElementById("root")!).render(
   element={<DeceasedBirthRegistrationApplications />}
 />
 <Route
+  path="/death-registration-reprint"
+  element={<DeathRegistrationReprint />}
+/>
+<Route
+  path="/death-registration-reprint-applications"
+  element={<DeathRegistrationReprintApplications />}
+/>
+<Route
   path="/birth-registration-book"
   element={<BirthRegistrationBook />}
 />
@@ -236,6 +264,14 @@ createRoot(document.getElementById("root")!).render(
   element={<DeathRegistrationApplications />}
 />
 <Route
+  path="/death-registration-correction-list"
+  element={<DeathRegistrationCorrectionList />}
+/>
+<Route
+  path="/death-registration-correction-fee"
+  element={<DeathRegistrationCorrectionFee />}
+/>
+<Route
   path="/death-registration-book"
   element={<DeathRegistrationBook />}
 />
@@ -243,6 +279,63 @@ createRoot(document.getElementById("root")!).render(
   path="/death-fee-voucher"
   element={<DeathFeeVoucher />}
 />
+<Route
+  path="/death-fee-register"
+  element={<DeathFeeRegister />}
+/>
+<Route
+  path="/death-registration-preview"
+  element={<DeathRegistrationPreview />}
+/>
+<Route
+  path="/death-registration-certificate"
+  element={<DeathRegistrationCertificate />}
+/>
+<Route
+  path="/death-registration-correction"
+  element={<DeathRegistrationCorrection />}
+/>
+<Route
+  path="/death-registration-correction-view"
+  element={<DeathRegistrationCorrectionView />}
+/>
+<Route
+  path="/warish-certificate"
+  element={<WarishCertificateApplication />}
+/>
+<Route
+  path="/warish-certificate-preview"
+  element={<WarishCertificatePreview />}
+/>
+<Route
+  path="/warish-certificate-list"
+  element={<WarishCertificateApplicationList />}
+/>
+<Route
+  path="/same-name-certificate-application"
+  element={<SameNameCertificate />}
+/>
+<Route
+  path="/same-name-certificate-applications"
+  element={<SameNameCertificateApplications />}
+/>
+<Route
+  path="/same-name-certificate-preview"
+  element={<SameNameCertificatePreview />}
+/>
+<Route
+  path="/same-name-certificate-book"
+  element={<SameNameCertificateBook />}
+/>
+<Route
+  path="/same-name-certificate-certificate"
+  element={<SameNameCertificatePrint />}
+/>
+<Route
+  path="/same-name-certificate-fee-register"
+  element={<SameNameCertificateFeeRegister />}
+/>
+<Route path="/seal" element={<Seal />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>

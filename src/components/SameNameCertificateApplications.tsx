@@ -1,9 +1,8 @@
-
 import React, { useEffect, useState } from "react";
 import "../css/BirthRegistrationApplication.css";
 import { useNavigate } from "react-router-dom";
 
-const DeathRegistrationApplications: React.FC = () => {
+const SameNameCertificateApplications: React.FC = () => {
   const [applications, setApplications] = useState<any[]>([]);
   const navigate = useNavigate();
 
@@ -12,24 +11,18 @@ const DeathRegistrationApplications: React.FC = () => {
   // =========================================================
   useEffect(() => {
     const savedApplications = localStorage.getItem(
-      "deathRegistrationApplications"
+      "sameNameCertificateApplications"
     );
 
     if (savedApplications) {
       try {
-        const parsedApplications = JSON.parse(
-          savedApplications
-        );
+        const parsedApplications = JSON.parse(savedApplications);
 
         if (Array.isArray(parsedApplications)) {
           setApplications(parsedApplications);
         }
       } catch (error) {
-        console.error(
-          "Application data load error:",
-          error
-        );
-
+        console.error("Application data load error:", error);
         setApplications([]);
       }
     }
@@ -52,7 +45,7 @@ const DeathRegistrationApplications: React.FC = () => {
     setApplications(updatedApplications);
 
     localStorage.setItem(
-      "deathRegistrationApplications",
+      "sameNameCertificateApplications",
       JSON.stringify(updatedApplications)
     );
   };
@@ -67,12 +60,9 @@ const DeathRegistrationApplications: React.FC = () => {
     const isDuplicate = applications.some(
       (item, itemIndex) =>
         itemIndex !== index &&
-        item.deceasedNameBn ===
-          application.deceasedNameBn &&
-        item.fatherNameBeg ===
-          application.fatherNameBeg &&
-        item.motherName ===
-          application.motherName
+        item.banglaName === application.banglaName &&
+        item.fatherNameBeg === application.fatherNameBeg &&
+        item.motherName === application.motherName
     );
 
     if (isDuplicate) {
@@ -81,10 +71,7 @@ const DeathRegistrationApplications: React.FC = () => {
         duplicateStatus: true,
       });
 
-      alert(
-        "সম্ভাব্য ডুপ্লিকেট আবেদন পাওয়া গেছে।"
-      );
-
+      alert("সম্ভাব্য ডুপ্লিকেট আবেদন পাওয়া গেছে।");
       return;
     }
 
@@ -104,10 +91,7 @@ const DeathRegistrationApplications: React.FC = () => {
       prompt("আবেদন ফি লিখুন:")
     );
 
-    if (
-      isNaN(applicationFee) ||
-      applicationFee < 0
-    ) {
+    if (isNaN(applicationFee) || applicationFee < 0) {
       alert("সঠিক আবেদন ফি লিখুন।");
       return;
     }
@@ -116,10 +100,7 @@ const DeathRegistrationApplications: React.FC = () => {
       prompt("সার্ভিস চার্জ লিখুন:")
     );
 
-    if (
-      isNaN(serviceCharge) ||
-      serviceCharge < 0
-    ) {
+    if (isNaN(serviceCharge) || serviceCharge < 0) {
       alert("সঠিক সার্ভিস চার্জ লিখুন।");
       return;
     }
@@ -128,7 +109,7 @@ const DeathRegistrationApplications: React.FC = () => {
     // Receipt Number
     // =====================================================
     const receiptNo =
-      "DR-" +
+      "SN-" +
       Math.floor(
         100000 + Math.random() * 900000
       );
@@ -144,20 +125,14 @@ const DeathRegistrationApplications: React.FC = () => {
     // =====================================================
     const feeRecord = {
       applicationId:
-        applications[index].applicationId ||
-        applications[index].id,
+        applications[index].birthRegNo,
 
       receiptNo,
 
       paymentDate,
 
-      deceasedNameBn:
-        applications[index].deceasedNameBn ||
-        "",
-
-      birthRegistrationNo:
-        applications[index].birthRegistrationNo ||
-        "",
+      banglaName:
+        applications[index].banglaName,
 
       applicationFee,
 
@@ -167,17 +142,18 @@ const DeathRegistrationApplications: React.FC = () => {
     };
 
     // =====================================================
-    // Save Death Fee Register
+    // Save Fee Register
     // =====================================================
     const savedFees = JSON.parse(
-      localStorage.getItem("deathFeeRegister") ||
-        "[]"
+      localStorage.getItem(
+        "sameNameCertificateFeeRegister"
+      ) || "[]"
     );
 
     savedFees.unshift(feeRecord);
 
     localStorage.setItem(
-      "deathFeeRegister",
+      "sameNameCertificateFeeRegister",
       JSON.stringify(savedFees)
     );
 
@@ -192,12 +168,9 @@ const DeathRegistrationApplications: React.FC = () => {
       serviceCharge,
       totalAmount,
 
-      // Payment হওয়ার পরে Receive করা যাবে
       status:
-        applications[index].status ===
-          "Received" ||
-        applications[index].status ===
-          "Registered"
+        applications[index].status === "Received" ||
+        applications[index].status === "Registered"
           ? applications[index].status
           : "Pending",
     });
@@ -208,30 +181,67 @@ const DeathRegistrationApplications: React.FC = () => {
   // =========================================================
   // Register Application
   // =========================================================
- const handleRegister = (index: number) => {
-  const registerNo =
-    applications[index].birthRegistrationNo;
+  const handleRegister = (index: number) => {
+    const applications = JSON.parse(
+      localStorage.getItem(
+        "sameNameCertificateApplications"
+      ) || "[]"
+    );
 
-  updateApplication(index, {
-    status: "Registered",
-    registerStatus: true,
-   registerDate:
-  new Date().toLocaleDateString("en-GB"),
-    registerNo,
-  });
+    // আগের সর্বশেষ সিরিয়াল বের করা
+    const lastSerial = applications.reduce(
+      (max: number, app: any) => {
+        const registerNo = String(
+          app.registerNo || ""
+        );
 
-  alert(
-    `আবেদন রেজিস্টার করা হয়েছে।\nমৃত্যু নিবন্ধন নম্বর: ${registerNo}`
-  );
-};
+        if (registerNo.length === 17) {
+          const serial = Number(
+            registerNo.slice(-6)
+          );
+
+          return serial > max ? serial : max;
+        }
+
+        return max;
+      },
+      200000
+    );
+
+    const serialNumber = lastSerial + 1;
+
+    // জন্ম সাল বের করা
+    const birthYear = String(
+      applications[index].birthDate
+    ).slice(0, 4);
+
+    // ১৭ সংখ্যার Register Number
+    const registerNo =
+      birthYear +
+      "4195450" +
+      String(serialNumber).padStart(6, "0");
+
+    updateApplication(index, {
+      status: "Registered",
+      registerStatus: true,
+      registerDate:
+        new Date().toLocaleDateString("bn-BD"),
+      registerNo,
+    });
+
+    alert(
+      `আবেদন রেজিস্টার করা হয়েছে।\nরেজিস্টার নম্বর: ${registerNo}`
+    );
+  };
+
   // =========================================================
-  // Print Application Form
+  // Print Application
   // =========================================================
   const handlePrintApplication = (
     application: any
   ) => {
     navigate(
-      "/death-registration-preview",
+      "/same-name-certificate-preview",
       {
         state: {
           ...application,
@@ -248,7 +258,7 @@ const DeathRegistrationApplications: React.FC = () => {
     application: any
   ) => {
     navigate(
-      "/death-fee-voucher",
+      "/same-name-certificate-payment-receipt",
       {
         state: {
           ...application,
@@ -265,11 +275,10 @@ const DeathRegistrationApplications: React.FC = () => {
     application: any
   ) => {
     navigate(
-      "/death-registration-certificate",
+      "/same-name-certificate-certificate",
       {
         state: {
-          registerNo:
-            application.registerNo,
+          ...application,
         },
       }
     );
@@ -282,7 +291,7 @@ const DeathRegistrationApplications: React.FC = () => {
     <div className="deceased-applications-container">
 
       <h2>
-        মৃত্যু নিবন্ধনের আবেদনসমূহ
+        একই নামে সনদ পত্রের আবেদনসমূহ
       </h2>
 
       <div className="applications-table-wrapper">
@@ -291,13 +300,13 @@ const DeathRegistrationApplications: React.FC = () => {
 
           <thead>
             <tr>
-              <th>আবেদন আইডি</th>
-              <th>জন্ম নিবন্ধন নম্বর</th>
+              <th>আবেদনকারীর ছবি</th>
+              <th>BRN</th>
               <th>আবেদনের তারিখ</th>
-              <th>মৃত ব্যক্তির নাম</th>
+              <th>আবেদনকারীর নাম</th>
               <th>পিতার নাম</th>
               <th>মাতার নাম</th>
-              <th>মৃত্যুর তারিখ</th>
+              <th>লিঙ্গ</th>
               <th>আবেদনপত্রের অবস্থা</th>
               <th>Action</th>
             </tr>
@@ -308,10 +317,7 @@ const DeathRegistrationApplications: React.FC = () => {
             {applications.length > 0 ? (
 
               applications.map(
-                (
-                  application,
-                  index
-                ) => {
+                (application, index) => {
 
                   // -----------------------------------------
                   // Status
@@ -355,79 +361,79 @@ const DeathRegistrationApplications: React.FC = () => {
                   return (
                     <tr
                       key={
-                        application.applicationId ||
-                        application.id ||
+                        application.birthRegNo ||
                         index
                       }
                     >
 
                       {/* ===================================
-                          Application ID
+                          Applicant Photo
                       =================================== */}
                       <td>
-                        {application.applicationId ||
-                          "-"}
+
+                        {application.preview ? (
+                          <img
+                            src={
+                              application.preview
+                            }
+                            alt="আবেদনকারীর ছবি"
+                            className="applicant-photo"
+                          />
+                        ) : (
+                          "ছবি নেই"
+                        )}
+
                       </td>
 
                       {/* ===================================
-                          Birth Registration No
+                          BRN / Register Number
                       =================================== */}
                       <td>
-                        {
-                          application.birthRegistrationNo ||
-                          "-"
-                        }
+                        {application.registerNo ||
+                          application.birthRegNo ||
+                          "-"}
                       </td>
 
                       {/* ===================================
                           Application Date
                       =================================== */}
                       <td>
-                        {
-                          application.applicationDate ||
-                          "-"
-                        }
+                        {application.applicationDate ||
+                          "-"}
                       </td>
 
                       {/* ===================================
-                          Deceased Name
+                          Applicant Name
                       =================================== */}
                       <td>
-                        {
-                          application.deceasedNameBn ||
-                          "-"
-                        }
+                        {application.applicantName ||
+                          application.banglaName ||
+                          "-"}
                       </td>
 
                       {/* ===================================
                           Father
                       =================================== */}
                       <td>
-                        {
-                          application.fatherNameBeg ||
-                          application.fatherName ||
-                          "-"
-                        }
+                        {application.fatherNameBeg ||
+                          "-"}
                       </td>
 
                       {/* ===================================
                           Mother
                       =================================== */}
                       <td>
-                        {
-                          application.motherName ||
-                          "-"
-                        }
+                        {application.motherName ||
+                          "-"}
                       </td>
 
                       {/* ===================================
-                          Death Date
+                          Gender
                       =================================== */}
                       <td>
-                        {
-                          application.deathDate ||
-                          "-"
-                        }
+                        {application.gender?.name_bn ||
+                          application.gender ||
+                          "-"}
                       </td>
 
                       {/* ===================================
@@ -457,21 +463,19 @@ const DeathRegistrationApplications: React.FC = () => {
 
                       {/* ===================================
                           ACTION BUTTONS
-                          Maximum 4 buttons
                       =================================== */}
                       <td className="action-buttons">
 
-                        {/* =================================================
+                        {/* =================================
                             1. বিস্তারিত প্রদর্শন
-                            সবসময় থাকবে
-                        ================================================= */}
+                        ================================= */}
                         <button
                           type="button"
                           className="view-btn"
                           title="বিস্তারিত প্রদর্শন"
                           onClick={() =>
                             navigate(
-                              "/death-registration-preview",
+                              "/same-name-certificate-preview",
                               {
                                 state:
                                   application,
@@ -482,10 +486,9 @@ const DeathRegistrationApplications: React.FC = () => {
                           👁
                         </button>
 
-                        {/* =================================================
+                        {/* =================================
                             2. আবেদন পত্র প্রিন্ট
-                            সবসময় থাকবে
-                        ================================================= */}
+                        ================================= */}
                         <button
                           type="button"
                           className="view-btn"
@@ -499,20 +502,18 @@ const DeathRegistrationApplications: React.FC = () => {
                           🖨️
                         </button>
 
-                        {/* =================================================
-                            Cancel / Reject / Duplicate হলে
-                            পরবর্তী action বন্ধ থাকবে
-                        ================================================= */}
+                        {/* =================================
+                            Cancel / Reject / Duplicate
+                        ================================= */}
                         {!isCancelled &&
                           !isRejected &&
                           !isDuplicate && (
 
                             <>
 
-                              {/* ===========================================
-                                  3A. Payment
-                                  Payment না হলে
-                              =========================================== */}
+                              {/* =============================
+                                  Payment
+                              ============================== */}
                               {!isPaid && (
                                 <button
                                   type="button"
@@ -528,10 +529,9 @@ const DeathRegistrationApplications: React.FC = () => {
                                 </button>
                               )}
 
-                              {/* ===========================================
-                                  3B. Receipt Print
-                                  Payment হয়ে গেলে
-                              =========================================== */}
+                              {/* =============================
+                                  Receipt
+                              ============================== */}
                               {isPaid && (
                                 <button
                                   type="button"
@@ -547,10 +547,9 @@ const DeathRegistrationApplications: React.FC = () => {
                                 </button>
                               )}
 
-                              {/* ===========================================
-                                  4A. Receive
-                                  Payment হওয়ার পরে এবং Receive না হলে
-                              =========================================== */}
+                              {/* =============================
+                                  Receive
+                              ============================== */}
                               {isPaid &&
                                 !isReceived &&
                                 !isRegistered && (
@@ -569,10 +568,9 @@ const DeathRegistrationApplications: React.FC = () => {
                                   </button>
                                 )}
 
-                              {/* ===========================================
+                              {/* =============================
                                   Register
-                                  Received হওয়ার পরে
-                              =========================================== */}
+                              ============================== */}
                               {isReceived &&
                                 !isRegistered && (
                                   <button
@@ -589,15 +587,14 @@ const DeathRegistrationApplications: React.FC = () => {
                                   </button>
                                 )}
 
-                              {/* ===========================================
+                              {/* =============================
                                   Certificate
-                                  Registered হওয়ার পরে
-                              =========================================== */}
+                              ============================== */}
                               {isRegistered && (
                                 <button
                                   type="button"
                                   className="certificate-print-btn"
-                                  title="সনদ পত্র গ্রহণ"
+                                  title="সনদ পত্র প্রিন্ট করুন"
                                   onClick={() =>
                                     handlePrintCertificate(
                                       application
@@ -609,7 +606,6 @@ const DeathRegistrationApplications: React.FC = () => {
                               )}
 
                             </>
-
                           )}
 
                       </td>
@@ -627,8 +623,7 @@ const DeathRegistrationApplications: React.FC = () => {
                   colSpan={9}
                   className="no-application"
                 >
-                  এখনো কোনো মৃত্যু নিবন্ধনের
-                  আবেদন জমা হয়নি।
+                  এখনো কোনো আবেদন জমা হয়নি।
                 </td>
 
               </tr>
@@ -645,5 +640,4 @@ const DeathRegistrationApplications: React.FC = () => {
   );
 };
 
-export default DeathRegistrationApplications;
-
+export default SameNameCertificateApplications;

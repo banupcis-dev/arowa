@@ -1,3 +1,4 @@
+
 import { useLocation } from "react-router-dom";
 import CertificateHeader from "./CertificateHeader";
 import CertificateFooter from "./CertificateFooter";
@@ -125,157 +126,170 @@ function DeceasedBirthCertificate() {
 
       {/* =========================
           Certificate Body
+          Watermark শুধু Body-এর ভিতরে
       ========================= */}
 
-      <table>
-        <tbody>
-          <tr>
+      <div className="certificate-body">
 
-            {/* =========================
-                বাংলা অংশ
-            ========================= */}
+        <img
+          src="/images/seal.png"
+          alt=""
+          className="certificate-watermark"
+        />
 
-            <td style={{ width: "50%", verticalAlign: "top" }}>
-              <table className="certificate-info">
-                <tbody>
-                  <tr>
-                    <td className="label">নাম</td>
-                    <td className="colon">:</td>
-                    <td>
-                      {application.deceasedNameBn ||
-                        application.banglaName ||
-                        "-"}
-                    </td>
-                  </tr>
+        <div className="certificate-content">
 
-                  <tr>
-                    <td className="label">জন্ম তারিখ</td>
-                    <td className="colon">:</td>
-                    <td>{application.dateOfBirth || "-"}</td>
-                  </tr>
+          <table>
+            <tbody>
+              <tr>
 
-                  <tr>
-                    <td className="label">লিঙ্গ</td>
-                    <td className="colon">:</td>
-                    <td>{application.gender || "-"}</td>
-                  </tr>
+                {/* =========================
+                    বাংলা অংশ
+                ========================= */}
 
-                  <tr>
-                    <td className="label">পিতার নাম</td>
-                    <td className="colon">:</td>
-                    <td>
-                      {application.fatherNameBeg ||
-                        application.fatherNameBn ||
-                        application.fatherName ||
-                        "-"}
-                    </td>
-                  </tr>
+                <td style={{ width: "50%", verticalAlign: "top" }}>
+                  <table className="certificate-info">
+                    <tbody>
+                      <tr>
+                        <td className="label">নাম</td>
+                        <td className="colon">:</td>
+                        <td>
+                          {application.deceasedNameBn ||
+                            application.banglaName ||
+                            "-"}
+                        </td>
+                      </tr>
 
-                  <tr>
-                    <td className="label">মাতার নাম</td>
-                    <td className="colon">:</td>
-                    <td>
-                      {application.motherName ||
-                        application.motherNameBn ||
-                        "-"}
-                    </td>
-                  </tr>
+                      <tr>
+                        <td className="label">জন্ম তারিখ</td>
+                        <td className="colon">:</td>
+                        <td>{application.dateOfBirth || "-"}</td>
+                      </tr>
 
-                  <tr>
-                    <td className="label">জন্মস্থান</td>
-                    <td className="colon">:</td>
-                    <td>{birthAddressBn || "-"}</td>
-                  </tr>
+                      <tr>
+                        <td className="label">লিঙ্গ</td>
+                        <td className="colon">:</td>
+                        <td>{application.gender || "-"}</td>
+                      </tr>
 
-                  <tr>
-                    <td className="label">বর্তমান ঠিকানা</td>
-                    <td className="colon">:</td>
-                    <td>{presentAddressBn || "-"}</td>
-                  </tr>
+                      <tr>
+                        <td className="label">পিতার নাম</td>
+                        <td className="colon">:</td>
+                        <td>
+                          {application.fatherNameBeg ||
+                            application.fatherNameBn ||
+                            application.fatherName ||
+                            "-"}
+                        </td>
+                      </tr>
 
-                  <tr>
-                    <td className="label">স্থায়ী ঠিকানা</td>
-                    <td className="colon">:</td>
-                    <td>{permanentAddressBn || "-"}</td>
-                  </tr>
+                      <tr>
+                        <td className="label">মাতার নাম</td>
+                        <td className="colon">:</td>
+                        <td>
+                          {application.motherName ||
+                            application.motherNameBn ||
+                            "-"}
+                        </td>
+                      </tr>
 
-                </tbody>
-              </table>
-            </td>
+                      <tr>
+                        <td className="label">জন্মস্থান</td>
+                        <td className="colon">:</td>
+                        <td>{birthAddressBn || "-"}</td>
+                      </tr>
 
-            {/* =========================
-                English অংশ
-            ========================= */}
+                      <tr>
+                        <td className="label">বর্তমান ঠিকানা</td>
+                        <td className="colon">:</td>
+                        <td>{presentAddressBn || "-"}</td>
+                      </tr>
 
-            <td style={{ width: "50%", verticalAlign: "top" }}>
-              <table className="certificate-info">
-                <tbody>
-                  <tr>
-                    <td className="label">Name</td>
-                    <td className="colon">:</td>
-                    <td>
-                      {application.deceasedNameEn ||
-                        application.englishName ||
-                        "-"}
-                    </td>
-                  </tr>
+                      <tr>
+                        <td className="label">স্থায়ী ঠিকানা</td>
+                        <td className="colon">:</td>
+                        <td>{permanentAddressBn || "-"}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
 
-                  <tr>
-                    <td className="label">Date of Birth</td>
-                    <td className="colon">:</td>
-                    <td>{application.dateOfBirth || "-"}</td>
-                  </tr>
+                {/* =========================
+                    English অংশ
+                ========================= */}
 
-                  <tr>
-                    <td className="label">Sex</td>
-                    <td className="colon">:</td>
-                    <td>{application.gender || "-"}</td>
-                  </tr>
+                <td style={{ width: "50%", verticalAlign: "top" }}>
+                  <table className="certificate-info">
+                    <tbody>
+                      <tr>
+                        <td className="label">Name</td>
+                        <td className="colon">:</td>
+                        <td>
+                          {application.deceasedNameEn ||
+                            application.englishName ||
+                            "-"}
+                        </td>
+                      </tr>
 
-                  <tr>
-                    <td className="label">Father's Name</td>
-                    <td className="colon">:</td>
-                    <td>
-                      {application.fatherNameEng ||
-                        application.fatherNameEn ||
-                        "-"}
-                    </td>
-                  </tr>
+                      <tr>
+                        <td className="label">Date of Birth</td>
+                        <td className="colon">:</td>
+                        <td>{application.dateOfBirth || "-"}</td>
+                      </tr>
 
-                  <tr>
-                    <td className="label">Mother's Name</td>
-                    <td className="colon">:</td>
-                    <td>
-                      {application.motherNameEng ||
-                        application.motherNameEn ||
-                        "-"}
-                    </td>
-                  </tr>
+                      <tr>
+                        <td className="label">Sex</td>
+                        <td className="colon">:</td>
+                        <td>{application.gender || "-"}</td>
+                      </tr>
 
-                  <tr>
-                    <td className="label">Place of Birth</td>
-                    <td className="colon">:</td>
-                    <td>{birthAddressEn || "-"}</td>
-                  </tr>
+                      <tr>
+                        <td className="label">Father's Name</td>
+                        <td className="colon">:</td>
+                        <td>
+                          {application.fatherNameEng ||
+                            application.fatherNameEn ||
+                            "-"}
+                        </td>
+                      </tr>
 
-                  <tr>
-                    <td className="label">Present Address</td>
-                    <td className="colon">:</td>
-                    <td>{presentAddressEn || "-"}</td>
-                  </tr>
+                      <tr>
+                        <td className="label">Mother's Name</td>
+                        <td className="colon">:</td>
+                        <td>
+                          {application.motherNameEng ||
+                            application.motherNameEn ||
+                            "-"}
+                        </td>
+                      </tr>
 
-                  <tr>
-                    <td className="label">Permanent Address</td>
-                    <td className="colon">:</td>
-                    <td>{permanentAddressEn || "-"}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </td>
+                      <tr>
+                        <td className="label">Place of Birth</td>
+                        <td className="colon">:</td>
+                        <td>{birthAddressEn || "-"}</td>
+                      </tr>
 
-          </tr>
-        </tbody>
-      </table>
+                      <tr>
+                        <td className="label">Present Address</td>
+                        <td className="colon">:</td>
+                        <td>{presentAddressEn || "-"}</td>
+                      </tr>
+
+                      <tr>
+                        <td className="label">Permanent Address</td>
+                        <td className="colon">:</td>
+                        <td>{permanentAddressEn || "-"}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
 
       {/* =========================
           Footer

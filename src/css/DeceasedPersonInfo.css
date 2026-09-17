@@ -1,0 +1,330 @@
+.deceased-info-container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 30px;
+  box-sizing: border-box;
+  background: #fff;
+  color: #000;
+  font-family: "Noto Sans Bengali", "SolaimanLipi", Arial, sans-serif;
+}
+
+.deceased-info-title {
+  text-align: center;
+  margin: 0 0 10px;
+  font-size: 28px;
+}
+
+.deceased-info-subtitle {
+  margin: 0 0 25px;
+  font-size: 20px;
+}
+
+/* দুই কলাম */
+.deceased-info-columns {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  box-sizing: border-box;
+}
+
+.deceased-info-column {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+/* প্রতিটি Field */
+.deceased-info-row {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 145px 15px minmax(0, 1fr);
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 18px;
+  box-sizing: border-box;
+}
+
+.deceased-info-row label {
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.deceased-info-row span {
+  font-weight: bold;
+}
+
+.deceased-info-row input,
+.deceased-info-row select {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  padding: 9px 10px;
+  box-sizing: border-box;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+}
+
+.deceased-info-row input:focus,
+.deceased-info-row select:focus {
+  outline: none;
+  border-color: #666;
+}
+
+/* ছোট স্ক্রিন */
+@media (max-width: 768px) {
+  .deceased-info-columns {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .deceased-info-title {
+    font-size: 24px;
+  }
+
+  .deceased-info-subtitle {
+    font-size: 18px;
+  }
+}
+
+/* Print */
+@media print {
+  .deceased-info-container {
+    width: 200mm;
+    max-width: 200mm;
+    padding: 5mm;
+    margin: 0 auto;
+  }
+
+  .deceased-info-title {
+    font-size: 22px;
+  }
+
+  .deceased-info-subtitle {
+    font-size: 17px;
+  }
+
+  .deceased-info-row {
+    margin-bottom: 10px;
+  }
+
+  .deceased-info-row input,
+  .deceased-info-row select {
+    border: 1px solid #000;
+    font-size: 13px;
+  }
+}
+.deceased-input-group {
+  width: 100%;
+  min-width: 0;
+}
+
+.deceased-error {
+  display: block;
+  margin-top: 5px;
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: bold;
+}
+/* ============================= */
+/* ওয়ারিশদের তালিকা */
+/* ============================= */
+
+.heir-list-section {
+  width: 100%;
+  margin-top: 35px;
+  box-sizing: border-box;
+}
+
+.heir-list-title {
+  margin: 0 0 20px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.heir-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.heir-table {
+  width: 100%;
+  min-width: 1000px;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.heir-table th,
+.heir-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  vertical-align: middle;
+  box-sizing: border-box;
+}
+
+.heir-table th {
+  text-align: center;
+  font-weight: bold;
+  background: #f5f5f5;
+  font-size: 14px;
+}
+
+.heir-table td {
+  font-size: 14px;
+}
+
+.heir-table th:nth-child(1),
+.heir-table td:nth-child(1) {
+  width: 65px;
+}
+
+.heir-table th:nth-child(2),
+.heir-table td:nth-child(2) {
+  width: 150px;
+}
+
+.heir-table th:nth-child(3),
+.heir-table td:nth-child(3) {
+  width: 150px;
+}
+
+.heir-table th:nth-child(4),
+.heir-table td:nth-child(4) {
+  width: 150px;
+}
+
+.heir-table th:nth-child(5),
+.heir-table td:nth-child(5) {
+  width: 130px;
+}
+
+.heir-table th:nth-child(6),
+.heir-table td:nth-child(6) {
+  width: 170px;
+}
+
+.heir-table th:nth-child(7),
+.heir-table td:nth-child(7) {
+  width: 120px;
+}
+
+.heir-table input,
+.heir-table select {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 7px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 13px;
+  background: #fff;
+}
+
+.heir-table input:focus,
+.heir-table select:focus {
+  outline: none;
+  border-color: #666;
+}
+
+.heir-serial-number {
+  text-align: center;
+  font-weight: bold;
+}
+
+.heir-add-button-wrapper {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.heir-add-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.heir-add-button:hover {
+  opacity: 0.85;
+}
+
+
+/* মোবাইল / ছোট স্ক্রিন */
+@media (max-width: 768px) {
+  .heir-list-section {
+    margin-top: 25px;
+  }
+
+  .heir-list-title {
+    font-size: 18px;
+  }
+
+  .heir-table {
+    min-width: 1000px;
+  }
+}
+
+
+/* প্রিন্ট */
+@media print {
+  .heir-list-section {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .heir-table-wrapper {
+    overflow: visible;
+  }
+
+  .heir-table {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .heir-table th,
+  .heir-table td {
+    padding: 4px;
+    font-size: 11px;
+  }
+
+  .heir-table input,
+  .heir-table select {
+    border: none;
+    padding: 2px;
+    font-size: 11px;
+  }
+
+  .heir-add-button-wrapper {
+    display: none;
+  }
+}
+
+.applicant-upload-row {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.applicant-upload-row > * {
+  flex: 1;
+}
+.submit-button-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.submit-button {
+  padding: 12px 35px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}

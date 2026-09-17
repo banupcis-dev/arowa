@@ -1,98 +1,192 @@
 import React, { useState } from "react";
-import "../../css/birth-registration/BirthRegistrationApplication.css";
-import AddressForm from "../AddressForm";
-import ParentInfoForm from "../ParentInfoForm";
-import ImageUpload from "../PhotoUpload";
-import DocumentsUpload from "../DocumentsUpload";
-import ApplicantsDeclaration from "../ApplicantsDeclaration";
+import "../css/banupcis.css";
+import AddressForm from "./AddressForm";
+import ParentInfoForm from "./ParentInfoForm";
+import ImageUpload from "./PhotoUpload";
+import DocumentsUpload from "./DocumentsUpload";
+import ApplicantsDeclaration from "./ApplicantsDeclaration";
+import SameNameCertificatePersonalInfo from "./SameNameCertificatePersonalInfo";
 import { useNavigate } from "react-router-dom";
+const SameNameCertificate: React.FC = () => {
+  const navigate = useNavigate();
 
+  // =========================
+  // Personal Information
+  // =========================
 
-const BirthRegistrationApplication: React.FC = () => {
-const [deceasedNameBn, setDeceasedNameBn] = useState("");
-const [deceasedNameEn, setDeceasedNameEn] = useState("");
-const [dateOfBirth, setDateOfBirth] = useState("");
-const [gender, setGender] = useState("");
-const [childOrder, setChildOrder] = useState("");
-const [birthAddress, setBirthAddress] = useState({
-  country: { name_bn: "", name_en: "" },
-  division: { name_bn: "", name_en: "" },
-  district: { name_bn: "", name_en: "" },
-  upazila: { name_bn: "", name_en: "" },
-  union: { name_bn: "", name_en: "" },
-  ward: "",
-  villageBn: "",
-  villageEn: "",
-  postOfficeBn: "",
-  postOfficeEn: "",
-  houseHoldingNoBn: "",
-  houseHoldingNoEn: "",
-});
+  const [banglaName, setBanglaName] = useState("");
+  const [englishName, setEnglishName] = useState("");
 
-const [fatherBRN, setFatherBRN] = useState("");
-const [fatherBirthDate, setFatherBirthDate] = useState("");
-const [fatherNameBeg, setFatherNameBeg] = useState("");
-const [fatherNameEn, setFatherNameEn] = useState("");
-const [fatherNationality, setFatherNationality] = useState("");
+  const [nicknameBn, setNicknameBn] = useState("");
+  const [nicknameEn, setNicknameEn] = useState("");
 
-const [motherBRN, setMotherBRN] = useState("");
-const [motherBirthDate, setMotherBirthDate] = useState("");
-const [motherName, setMotherName] = useState("");
-const [motherNameEn, setMotherNameEn] = useState("");
-const [motherNationality, setMotherNationality] = useState("");
-const [permanentAddress, setPermanentAddress] = useState({
-    
-  country: { name_bn: "", name_en: "" },
-  division: { name_bn: "", name_en: "" },
-  district: { name_bn: "", name_en: "" },
-  upazila: { name_bn: "", name_en: "" },
-  union: { name_bn: "", name_en: "" },
-  ward: "",
-  villageBn: "",
-  villageEn: "",
-  postOfficeBn: "",
-  postOfficeEn: "",
-  houseHoldingNoBn: "",
-  houseHoldingNoEn: "",
-});
-const [birthSameAsPermanent, setBirthSameAsPermanent] = useState(false);
-const [permanentSameAsPresent, setPermanentSameAsPresent] = useState(false);
+  const [birthRegNo, setBirthRegNo] = useState("");
+  const [birthDate, setBirthDate] = useState("");
 
-const [presentAddress, setPresentAddress] = useState({
-  country: { name_bn: "", name_en: "" },
-  division: { name_bn: "", name_en: "" },
-  district: { name_bn: "", name_en: "" },
-  upazila: { name_bn: "", name_en: "" },
-  union: { name_bn: "", name_en: "" },
-  ward: "",
-  villageBn: "",
-  villageEn: "",
-  postOfficeBn: "",
-  postOfficeEn: "",
-  houseHoldingNoBn: "",
-  houseHoldingNoEn: "",
-});
+  const [gender, setGender] = useState({
+    name_bn: "",
+    name_en: "",
+  });
 
-const [image, setImage] = useState(null);
-const [preview, setPreview] = useState("");
-const [files, setFiles] = useState([]);
-const [applicantRelation, setApplicantRelation] = useState("");
-const [applicantName, setApplicantName] = useState("");
-const [isAgreed, setIsAgreed] = useState(false);
-const [applicantsDeclaration, setApplicantsDeclaration] = useState("");
-const handlePreview = () => {
-  navigate("/birth-registration-preview", {
-    state: {
-      deceasedNameBn,
-      deceasedNameEn,
-      dateOfBirth,
+  // =========================
+  // Birth Address
+  // =========================
+
+  const [birthAddress, setBirthAddress] = useState({
+    country: { name_bn: "", name_en: "" },
+    division: { name_bn: "", name_en: "" },
+    district: { name_bn: "", name_en: "" },
+    upazila: { name_bn: "", name_en: "" },
+    union: { name_bn: "", name_en: "" },
+    ward: "",
+    villageBn: "",
+    villageEn: "",
+    postOfficeBn: "",
+    postOfficeEn: "",
+    houseHoldingNoBn: "",
+    houseHoldingNoEn: "",
+  });
+
+  // =========================
+  // Parent Information
+  // =========================
+
+  const [fatherBRN, setFatherBRN] = useState("");
+  const [fatherBirthDate, setFatherBirthDate] = useState("");
+  const [fatherNameBeg, setFatherNameBeg] = useState("");
+  const [fatherNameEn, setFatherNameEn] = useState("");
+  const [fatherNationality, setFatherNationality] = useState("");
+
+  const [motherBRN, setMotherBRN] = useState("");
+  const [motherBirthDate, setMotherBirthDate] = useState("");
+  const [motherName, setMotherName] = useState("");
+  const [motherNameEn, setMotherNameEn] = useState("");
+  const [motherNationality, setMotherNationality] = useState("");
+
+  // =========================
+  // Permanent Address
+  // =========================
+
+  const [permanentAddress, setPermanentAddress] = useState({
+    country: { name_bn: "", name_en: "" },
+    division: { name_bn: "", name_en: "" },
+    district: { name_bn: "", name_en: "" },
+    upazila: { name_bn: "", name_en: "" },
+    union: { name_bn: "", name_en: "" },
+    ward: "",
+    villageBn: "",
+    villageEn: "",
+    postOfficeBn: "",
+    postOfficeEn: "",
+    houseHoldingNoBn: "",
+    houseHoldingNoEn: "",
+  });
+
+  // =========================
+  // Present Address
+  // =========================
+
+  const [presentAddress, setPresentAddress] = useState({
+    country: { name_bn: "", name_en: "" },
+    division: { name_bn: "", name_en: "" },
+    district: { name_bn: "", name_en: "" },
+    upazila: { name_bn: "", name_en: "" },
+    union: { name_bn: "", name_en: "" },
+    ward: "",
+    villageBn: "",
+    villageEn: "",
+    postOfficeBn: "",
+    postOfficeEn: "",
+    houseHoldingNoBn: "",
+    houseHoldingNoEn: "",
+  });
+
+  // =========================
+  // Address Same Options
+  // =========================
+
+  const [birthSameAsPermanent, setBirthSameAsPermanent] =
+    useState(false);
+
+  const [permanentSameAsPresent, setPermanentSameAsPresent] =
+    useState(false);
+
+  // =========================
+  // Image / Documents
+  // =========================
+
+  const [image, setImage] = useState(null);
+  const [preview, setPreview] = useState("");
+  const [files, setFiles] = useState([]);
+
+  // =========================
+  // Applicant Information
+  // =========================
+
+  const [applicantRelation, setApplicantRelation] = useState("");
+  const [applicantName, setApplicantName] = useState("");
+
+  // =========================
+  // Declaration
+  // =========================
+
+  const [isAgreed, setIsAgreed] = useState(false);
+  const [applicantsDeclaration, setApplicantsDeclaration] =
+    useState("");
+
+  // =========================
+  // Gender Change
+  // =========================
+
+  const handleGenderChange = (
+    e: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    const value = e.target.value;
+
+    if (value === "পুরুষ") {
+      setGender({
+        name_bn: "পুরুষ",
+        name_en: "Male",
+      });
+    } else if (value === "নারী") {
+      setGender({
+        name_bn: "নারী",
+        name_en: "Female",
+      });
+    } else if (value === "তৃতীয় লিঙ্গ") {
+      setGender({
+        name_bn: "তৃতীয় লিঙ্গ",
+        name_en: "Third Gender",
+      });
+    } else {
+      setGender({
+        name_bn: "",
+        name_en: "",
+      });
+    }
+  };
+
+  // =========================
+  // Preview
+  // =========================
+
+  const handlePreview = () => {
+    const applicationData = {
+      // Personal
+      banglaName,
+      englishName,
+      nicknameBn,
+      nicknameEn,
+      birthRegNo,
+      birthDate,
       gender,
-      childOrder,
 
+      // Address
       birthAddress,
       permanentAddress,
       presentAddress,
 
+      // Parents
       fatherBRN,
       fatherBirthDate,
       fatherNameBeg,
@@ -105,214 +199,221 @@ const handlePreview = () => {
       motherNameEn,
       motherNationality,
 
+      // Image / Documents
+      image,
       preview,
       files,
 
-      applicantsDeclaration,
+      // Applicant
       applicantRelation,
       applicantName,
-      isAgreed,
-    },
-  });
-};
 
-const navigate = useNavigate();
+      // Declaration
+      applicantsDeclaration,
+      isAgreed,
+    };
+
+    navigate("/same-name-certificate-preview", {
+      state: applicationData,
+    });
+  };
+
   return (
     <div className="birth-registration-form">
 
-      <h2>০৩ জুন, ২০০৭ সালের আগে মৃত ব্যক্তির জন্ম নিবন্ধন</h2>
+      <h2>একই নামে সনদ পত্রের জন্য আবেদন</h2>
 
-      <h3>মৃত ব্যক্তির তথ্যঃ</h3>
+      {/* =========================
+          Personal Information
+      ========================== */}
 
-      <div className="form-grid">
+      <SameNameCertificatePersonalInfo
+        banglaName={banglaName}
+        setBanglaName={setBanglaName}
+        englishName={englishName}
+        setEnglishName={setEnglishName}
+        nicknameBn={nicknameBn}
+        setNicknameBn={setNicknameBn}
+        nicknameEn={nicknameEn}
+        setNicknameEn={setNicknameEn}
+        birthRegNo={birthRegNo}
+        setBirthRegNo={setBirthRegNo}
+        birthDate={birthDate}
+        setBirthDate={setBirthDate}
+        gender={gender}
+        handleGenderChange={handleGenderChange}
+        errors={{}}
+      />
 
-        <div className="form-group">
-          <label>মৃত ব্যক্তির নাম (বাংলা)</label>
-          <input
-            type="text"
-            value={deceasedNameBn}
-            onChange={(e) => setDeceasedNameBn(e.target.value)}
-          />
-        </div>
-
-        <div className="form-group">
-          <label>মৃত ব্যক্তির নাম (English)</label>
-          <input
-            type="text"
-            value={deceasedNameEn}
-            onChange={(e) => setDeceasedNameEn(e.target.value)}
-          />
-        </div>
-
-        <div className="form-group">
-          <label>জন্ম তারিখ (Date of Birth)</label>
-          <input
-            type="date"
-            value={dateOfBirth}
-            onChange={(e) => setDateOfBirth(e.target.value)}
-          />
-        </div>
-<div className="form-group">
-  <label>লিঙ্গ (Gender)</label>
-
-  <select
-    value={gender}
-    onChange={(e) => setGender(e.target.value)}
-  >
-    <option value="">নির্বাচন করুন</option>
-    <option value="পুরুষ">পুরুষ</option>
-    <option value="মহিলা">মহিলা</option>
-    <option value="তৃতীয় লিঙ্গ">তৃতীয় লিঙ্গ</option>
-  </select>
-</div>
-
-       <div className="form-group">
-  <label>পিতা-মাতার কততম সন্তান (Child Order)</label>
-
-  <select
-    value={childOrder}
-    onChange={(e) => setChildOrder(e.target.value)}
-  >
-    <option value="">নির্বাচন করুন</option>
-    <option value="1">১</option>
-    <option value="2">২</option>
-    <option value="3">৩</option>
-    <option value="4">৪</option>
-    <option value="5">৫</option>
-    <option value="6">৬</option>
-    <option value="7">৭</option>
-    <option value="8">৮</option>
-    <option value="9">৯</option>
-    <option value="10">১০</option>
-    <option value="11">১১</option>
-    <option value="12">১২</option>
-    <option value="13">১৩</option>
-    <option value="14">১৪</option>
-    <option value="15">১৫</option>
-  </select>
-</div>
-      </div>
+      {/* =========================
+          Birth Address
+      ========================== */}
 
       <AddressForm
-  title="মৃত ব্যক্তির জন্মস্থানের ঠিকানাঃ"
-  address={birthAddress}
-  setAddress={setBirthAddress}
-  errors={{}}
-/>
+        title="জন্মস্থানের ঠিকানাঃ"
+        address={birthAddress}
+        setAddress={setBirthAddress}
+        errors={{}}
+      />
 
-<ParentInfoForm
-  fatherBRN={fatherBRN}
-  setFatherBRN={setFatherBRN}
-  fatherBirthDate={fatherBirthDate}
-  setFatherBirthDate={setFatherBirthDate}
-  fatherNameBeg={fatherNameBeg}
-  setFatherNameBeg={setFatherNameBeg}
-  fatherNameEn={fatherNameEn}
-  setFatherNameEn={setFatherNameEn}
-  fatherNationality={fatherNationality}
-  setFatherNationality={setFatherNationality}
+      {/* =========================
+          Parent Information
+      ========================== */}
 
-  motherBRN={motherBRN}
-  setMotherBRN={setMotherBRN}
-  motherBirthDate={motherBirthDate}
-  setMotherBirthDate={setMotherBirthDate}
-  motherName={motherName}
-  setMotherName={setMotherName}
-  motherNameEn={motherNameEn}
-  setMotherNameEn={setMotherNameEn}
-  motherNationality={motherNationality}
-  setMotherNationality={setMotherNationality}
-  errors={{}}
-/>
-<label className="same-address">
-  <input
-    type="checkbox"
-    checked={birthSameAsPermanent}
-    onChange={(e) => {
-      const checked = e.target.checked;
-      setBirthSameAsPermanent(checked);
+      <ParentInfoForm
+        fatherBRN={fatherBRN}
+        setFatherBRN={setFatherBRN}
+        fatherBirthDate={fatherBirthDate}
+        setFatherBirthDate={setFatherBirthDate}
+        fatherNameBeg={fatherNameBeg}
+        setFatherNameBeg={setFatherNameBeg}
+        fatherNameEn={fatherNameEn}
+        setFatherNameEn={setFatherNameEn}
+        fatherNationality={fatherNationality}
+        setFatherNationality={setFatherNationality}
 
-      if (checked) {
-        setPermanentAddress({ ...birthAddress });
-      }
-    }}
-  />
+        motherBRN={motherBRN}
+        setMotherBRN={setMotherBRN}
+        motherBirthDate={motherBirthDate}
+        setMotherBirthDate={setMotherBirthDate}
+        motherName={motherName}
+        setMotherName={setMotherName}
+        motherNameEn={motherNameEn}
+        setMotherNameEn={setMotherNameEn}
+        motherNationality={motherNationality}
+        setMotherNationality={setMotherNationality}
 
-  মৃত ব্যক্তির জন্মস্থানের ঠিকানা ও স্থায়ী ঠিকানা একই হলে টিকচিহ্ন দাওঃ
-</label>
-<AddressForm
-  title="মৃত ব্যক্তির স্থায়ী ঠিকানাঃ"
-  address={permanentAddress}
-  setAddress={setPermanentAddress}
-  disabled={birthSameAsPermanent}
-  errors={{}}
-/>
+        errors={{}}
+      />
 
-<label className="same-address">
-  <input
-    type="checkbox"
-    checked={permanentSameAsPresent}
-    onChange={(e) => {
-      const checked = e.target.checked;
-      setPermanentSameAsPresent(checked);
+      {/* =========================
+          Birth Address = Permanent
+      ========================== */}
 
-      if (checked) {
-        setPresentAddress({ ...permanentAddress });
-      }
-    }}
-  />
-  মৃত ব্যক্তির স্থায়ী ঠিকানা ও বর্তমান ঠিকানা একই হলে টিকচিহ্ন দাওঃ
-</label>
+      <label className="same-address">
+        <input
+          type="checkbox"
+          checked={birthSameAsPermanent}
+          onChange={(e) => {
+            const checked = e.target.checked;
 
-<AddressForm
-  title="মৃত ব্যক্তির বর্তমান ঠিকানাঃ"
-  address={presentAddress}
-  setAddress={setPresentAddress}
-  disabled={permanentSameAsPresent}
-  errors={{}}
-/>
+            setBirthSameAsPermanent(checked);
 
-<div className="form-row-group">
+            if (checked) {
+              setPermanentAddress({
+                ...birthAddress,
+              });
+            }
+          }}
+        />
 
-  <div className="form-row">
-    <ImageUpload
-      image={image}
-      setImage={setImage}
-      preview={preview}
-      setPreview={setPreview}
-      errors={{}}
-    />
-  </div>
+        জন্মস্থানের ঠিকানা ও স্থায়ী ঠিকানা একই হলে টিকচিহ্ন দাওঃ
+      </label>
 
-  <div className="form-row">
-    <DocumentsUpload
-      files={files}
-      setFiles={setFiles}
-      errors={{}}
-    />
-  </div>
+      {/* =========================
+          Permanent Address
+      ========================== */}
 
-</div>
-<ApplicantsDeclaration
-  banglaName={deceasedNameBn}
-  applicantsDeclaration={applicantsDeclaration}
-  setApplicantsDeclaration={setApplicantsDeclaration}
-  applicantRelation={applicantRelation}
-  setApplicantRelation={setApplicantRelation}
-  applicantName={applicantName}
-  setApplicantName={setApplicantName}
-  isAgreed={isAgreed}
-  setIsAgreed={setIsAgreed}
-  errors={{}}
-/>
-<button
-  type="button"
-  onClick={handlePreview}
->
-  প্রিভিউ দেখুন
-</button>
+      <AddressForm
+        title="স্থায়ী ঠিকানাঃ"
+        address={permanentAddress}
+        setAddress={setPermanentAddress}
+        disabled={birthSameAsPermanent}
+        errors={{}}
+      />
+
+      {/* =========================
+          Permanent Address = Present
+      ========================== */}
+
+      <label className="same-address">
+        <input
+          type="checkbox"
+          checked={permanentSameAsPresent}
+          onChange={(e) => {
+            const checked = e.target.checked;
+
+            setPermanentSameAsPresent(checked);
+
+            if (checked) {
+              setPresentAddress({
+                ...permanentAddress,
+              });
+            }
+          }}
+        />
+
+        স্থায়ী ঠিকানা ও বর্তমান ঠিকানা একই হলে টিকচিহ্ন দাওঃ
+      </label>
+
+      {/* =========================
+          Present Address
+      ========================== */}
+
+      <AddressForm
+        title="বর্তমান ঠিকানাঃ"
+        address={presentAddress}
+        setAddress={setPresentAddress}
+        disabled={permanentSameAsPresent}
+        errors={{}}
+      />
+
+      {/* =========================
+          Image + Documents
+      ========================== */}
+
+      <div className="form-row-group">
+
+        <div className="form-row">
+          <ImageUpload
+            image={image}
+            setImage={setImage}
+            preview={preview}
+            setPreview={setPreview}
+            errors={{}}
+          />
+        </div>
+
+        <div className="form-row">
+          <DocumentsUpload
+            files={files}
+            setFiles={setFiles}
+            errors={{}}
+          />
+        </div>
+
+      </div>
+
+      {/* =========================
+          Applicant Declaration
+      ========================== */}
+
+      <ApplicantsDeclaration
+        banglaName={banglaName}
+        applicantsDeclaration={applicantsDeclaration}
+        setApplicantsDeclaration={setApplicantsDeclaration}
+        applicantRelation={applicantRelation}
+        setApplicantRelation={setApplicantRelation}
+        applicantName={applicantName}
+        setApplicantName={setApplicantName}
+        isAgreed={isAgreed}
+        setIsAgreed={setIsAgreed}
+        errors={{}}
+      />
+
+      {/* =========================
+          Preview Button
+      ========================== */}
+
+      <button
+        type="button"
+        onClick={handlePreview}
+      >
+        প্রিভিউ দেখুন
+      </button>
+
     </div>
   );
 };
 
-export default BirthRegistrationApplication;
+export default SameNameCertificate;
